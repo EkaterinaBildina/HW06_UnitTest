@@ -1,1 +1,65 @@
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.*;
+
+public class NewListTest {
+
+@Test
+// проверка создается ли NewList
+public void testNewList() {
+   NewList testList = mock(NewList.class);
+   when(testList()).thenReturn(new List("1,2,3,4,5,6,7,8,9,10"));
+   
+   assertThat(testList).isEqualTo("1,2,3,4,5,6,7,8,9,10");
+
+   }
+}
+
+@Test
+// проверить корректность работы вычисления среднего значения
+public void testCalculateAverage(){
+   NewList testList = mock(NewList.class);
+   when(testList()).thenReturn(new List("1,2,3,4,5,6,7,8,9,10"));
+
+   double expectedAverage = 5.5;
+   assertThat(testList.calculateAverage).isEquale(expectedAverage);
+
+}
+
+
+@Test
+public void testAverageCalculatorText1(){
+   NewList list1 = {6,7,8,9,10}; // double average1 = 8;
+   NewList list2 = {1,2,3,4,5}; //double average 2 = 3;
+
+   AverageCalculator averageCalculator = new AverageCalculator();
+
+assertThat(averageCalculator(list1, list2)).isEqualTo("Первый список имеет большее среднее значение");
+}
+
+
+@Test
+public void testAverageCalculatorText2(){
+   NewList list1 = {1,2,3,4,5}; // double average1 = 3;
+   NewList list2 = {6,7,8,9,10}; //double average 2 = 8;
+
+   AverageCalculator averageCalculator = new AverageCalculator();
+
+assertThat(averageCalculator(list1, list2)).isEqualTo("Второй список имеет большее среднее значение");
+}
+
+@Test
+public void testAverageCalculatorText3(){
+   NewList list1 = {1,2,3,4,5}; // double average1 = 3;
+   NewList list2 = {5,4,3,2,1}; //double average 2 = 3;
+
+   AverageCalculator averageCalculator = new AverageCalculator();
+
+assertThat(averageCalculator(list1, list2)).isEqualTo("Средние значения равны");
+}
 
